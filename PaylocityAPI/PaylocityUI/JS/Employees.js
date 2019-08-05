@@ -77,6 +77,7 @@ Employee_Objects.prototype.populateEmployees = function () {
             numeric: false
         },
         dataBound: function (e) {
+            //if a row was previously selected, push updated dataItem to window
             if (selectedItem) {
                 var dataItem = this.dataSource.get(selectedItem);
                 this.select($('[data-uid=' + dataItem.uid + ']'));
@@ -126,7 +127,7 @@ Employee_Objects.prototype.populateEmployees = function () {
         loadWindowContent(dataItem);
     }
         
-
+    //loads window data and widgets 
     function loadWindowContent(dataItem) {
 
         dataItem.PaycheckEmployeeBenefitCost = Math.round((dataItem.EmployeeBenefitCost / 26) * 100) / 100;
@@ -179,22 +180,10 @@ Employee_Objects.prototype.populateEmployees = function () {
                             success: function (result) {
                                 options.success(result);
                                 var grid = $("#app").getKendoGrid();
-                                //var dGrid = $(".dependents").data("kendoGrid");
+                                //capturing selected grid item in order to reopen window with correct row later
                                 selectedItem = grid.dataItem(grid.select()).EmployeeId;
-                                $('#app').data('kendoGrid').dataSource.read(); 
-
-                                //$('#app').data('kendoGrid').refresh(); 
+                                $('#app').data('kendoGrid').dataSource.read();  
                                 wnd.close();
-                                //$("#app").data("kendoGrid").dataSource.fetch()
-                                //var dataItem = $('#app').data('kendoGrid').dataSource.get(selectedItem);
-                                //loadWindowContent(dataItem);
-                                //var dataItem = aGrid.dataItem($(e.currentTarget).closest("tr"));
-
-                                //wnd.refresh({ data: dataItem });
-                                //$(wnd).html(kendo.render(detailsTemplate, dataItem)); 
-                                //wnd.content(detailsTemplate(dataItem));
-                                //wnd.center().open();
-
                             },
                             error: function (result) {
                                 options.error(result);
