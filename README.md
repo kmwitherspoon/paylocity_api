@@ -8,6 +8,8 @@ Paylocity API is an ASP.NET Web API that displays a user grid to input employees
 2. Sql Server Management Studio or Azure Data Studio for Mac users
 
 ## Deployment
+Will need to restore the database on local server using the PaylocityDatabase bak file.
+
 To build code, run Paylocity DB on local server and run API locally in VS.
 
 To test API calls, run API locally on VS and add "/swagger" on the end of the localhost url (ex. http://127.0.0.1:8080/swagger). This will open Swagger UI which allows the user to see the API calls and their parameters as well as run each call. 
